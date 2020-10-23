@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+
+<form method = 'post' action="{% url 'ex1:register' %}">
+{% csrf_token %}
+    <a href="http://127.0.0.1:8000/ex1/homepage/"><button type="button">返回主页</button></a>
+    <br>
+    <br>
+    <lable>注册用户名：</lable>
+    <input name="username" required></input>
+    <br>
+    <lable>请输入您的密码:</lable>
+    <input name="password" type="password" required></input>
+    <br>
+    <lable>性别：</lable>
+    男<input name="gender" type="radio" value="男"></input>
+    女<input name="gender" type="radio" value="女"></input>
+    <br>
+    <button type="submit">确认</button>
+    <br>
+    <br>
+    {% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}')
+            {% endfor %}
+        </script>
+    {% endif %}
+    {% if error %}
+    {{ error }}
+    {% endif %}
+</form>
+</body>
+</html>
